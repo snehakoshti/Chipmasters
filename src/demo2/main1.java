@@ -1,0 +1,1438 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package demo2;
+import java.awt.*;
+import javax.swing.*;
+import javax.swing.ImageIcon;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.net.URL;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.text.JTextComponent;
+
+/**
+ *
+ * @author Happy
+ */
+public class main1 extends javax.swing.JFrame{
+
+    /**
+     * Creates new form main1
+     */
+    public main1() {
+        
+        this.setUndecorated(true);
+        this.setVisible(true);
+        
+            initComponents();
+                
+            Toolkit tk = Toolkit.getDefaultToolkit();
+        
+            int xsize = (int)tk.getScreenSize().getWidth();
+            int ysize = (int)tk.getScreenSize().getHeight();
+            this.setSize(xsize,ysize);
+                             //   comboBox4.setVisible(false);
+                comboBox3.setVisible(false);
+                comboBox4.setVisible(false);
+                comboBox5.setVisible(false);
+                             
+                plus3.setVisible(false);
+                plus4.setVisible(false);
+                //plus5.setVisible(false);
+                             
+                currentDate();
+                
+                comboBox.setEditable(true);
+                JTextField text = (JTextField)comboBox.getEditor().getEditorComponent();
+                text.setText("");
+                text.addKeyListener(new comboxdevice(comboBox));
+                
+                comboBox1.setEditable(true);
+                JTextField text1 = (JTextField)comboBox1.getEditor().getEditorComponent();
+                text1.setText("");
+                text1.addKeyListener(new comboxdevice(comboBox1));
+                
+                 comboBox2.setEditable(true);
+                JTextField text2 = (JTextField)comboBox2.getEditor().getEditorComponent();
+                text2.setText("");
+                text2.addKeyListener(new comboxdevice(comboBox2));
+                
+                
+                comboBox3.setEditable(true);
+                JTextField text3 = (JTextField)comboBox3.getEditor().getEditorComponent();
+                text3.setText("");
+                text3.addKeyListener(new comboxdevice(comboBox3));
+                
+                
+                comboBox4.setEditable(true);
+                JTextField text4 = (JTextField)comboBox4.getEditor().getEditorComponent();
+                text4.setText("");
+                text4.addKeyListener(new comboxdevice(comboBox4));
+                
+                
+                comboBox5.setEditable(true);
+                JTextField text5 = (JTextField)comboBox5.getEditor().getEditorComponent();
+                text5.setText("");
+                text5.addKeyListener(new comboxdevice(comboBox5));
+                
+                
+                String id="";
+                int dd=0;
+                   try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/list_info?zeroDateTimeBehavior=convertToNull","root","");     
+                    st = conn.createStatement();
+                   JOptionPane.showMessageDialog(null,"Connected");
+    // MySQL database connection
+                } 
+                catch (Exception e) {
+                    JOptionPane.showMessageDialog(null,"Not Connected");
+                } 
+                String sql3="select * from customer";
+            ResultSet rs=null;
+           
+          
+          try{
+                 rs=st.executeQuery(sql3);
+                 id=null;
+                 while(rs.next())
+                 {
+                     id=rs.getString("Serial_No");
+                    
+                 }
+                // id="5";
+                //System.out.println(id);
+
+                dd=Integer.parseInt(id);
+                dd++;
+           }
+           catch(Exception e){}
+           jserialnotextfield2.setText(""+dd);
+           dd=0;
+           
+                
+    }
+    public void currentDate()
+    {
+            Calendar cal=new GregorianCalendar();
+             int day=cal.get( Calendar.DAY_OF_MONTH);
+             int month=cal.get( Calendar.MONTH);
+             int year=cal.get( Calendar.YEAR);
+             jinTextField2.setText(day+"/"+(month+1)+"/"+year);
+
+            
+        
+    }
+        /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jcust_nmLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jcust_mobileLabel7 = new javax.swing.JLabel();
+        jcust_mobiletextfield = new javax.swing.JTextField();
+        jdeviceLabel8 = new javax.swing.JLabel();
+        jmodelLabel9 = new javax.swing.JLabel();
+        jstatusLabel10 = new javax.swing.JLabel();
+        jpower_cableCheckBox1 = new javax.swing.JCheckBox();
+        jramCheckBox2 = new javax.swing.JCheckBox();
+        jadapter_smpsCheckBox3 = new javax.swing.JCheckBox();
+        jhddCheckBox4 = new javax.swing.JCheckBox();
+        jcarry_caseCheckBox6 = new javax.swing.JCheckBox();
+        jfanCheckBox7 = new javax.swing.JCheckBox();
+        jcpuCheckBox8 = new javax.swing.JCheckBox();
+        jcust_nmtextfield1 = new javax.swing.JTextField();
+        jcust_nmLabel4 = new javax.swing.JLabel();
+        jsavebutton = new javax.swing.JButton();
+        comboBox = new javax.swing.JComboBox<>();
+        comboBox1 = new javax.swing.JComboBox<>();
+        comboBox2 = new javax.swing.JComboBox<>();
+        jdeviceLabel9 = new javax.swing.JLabel();
+        jinTextField2 = new javax.swing.JFormattedTextField();
+        jdeviceLabel10 = new javax.swing.JLabel();
+        jdevice_s_n_TextField3 = new javax.swing.JTextField();
+        jmodel_no_TextField1 = new javax.swing.JTextField();
+        comboBox4 = new javax.swing.JComboBox<>();
+        comboBox3 = new javax.swing.JComboBox<>();
+        plus2 = new javax.swing.JButton();
+        plus4 = new javax.swing.JButton();
+        plus3 = new javax.swing.JButton();
+        comboBox5 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        makeargent = new javax.swing.JCheckBox();
+        jserialnotextfield2 = new javax.swing.JTextField();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(238, 238, 238));
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setText("  Customer  Registration");
+
+        jcust_nmLabel3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jcust_nmLabel3.setText("  Serial No:");
+
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jLabel4.setText(" In_Date:");
+
+        jcust_mobileLabel7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jcust_mobileLabel7.setText(" mobile No:");
+
+        jcust_mobiletextfield.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcust_mobiletextfield.setText(" ");
+        jcust_mobiletextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcust_mobiletextfieldActionPerformed(evt);
+            }
+        });
+        jcust_mobiletextfield.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcust_mobiletextfieldKeyTyped(evt);
+            }
+        });
+
+        jdeviceLabel8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdeviceLabel8.setText(" Model_No :");
+
+        jmodelLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jmodelLabel9.setText("  Model :");
+
+        jstatusLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jstatusLabel10.setText(" status:");
+
+        jpower_cableCheckBox1.setBackground(new java.awt.Color(238, 238, 238));
+        jpower_cableCheckBox1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jpower_cableCheckBox1.setText(" Power/Cable");
+        jpower_cableCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jpower_cableCheckBox1ActionPerformed(evt);
+            }
+        });
+        jpower_cableCheckBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jpower_cableCheckBox1KeyPressed(evt);
+            }
+        });
+
+        jramCheckBox2.setBackground(new java.awt.Color(238, 238, 238));
+        jramCheckBox2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jramCheckBox2.setText("  Ram");
+        jramCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jramCheckBox2ActionPerformed(evt);
+            }
+        });
+        jramCheckBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jramCheckBox2KeyPressed(evt);
+            }
+        });
+
+        jadapter_smpsCheckBox3.setBackground(new java.awt.Color(238, 238, 238));
+        jadapter_smpsCheckBox3.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jadapter_smpsCheckBox3.setText("  Adapter/Smps");
+        jadapter_smpsCheckBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jadapter_smpsCheckBox3ActionPerformed(evt);
+            }
+        });
+        jadapter_smpsCheckBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jadapter_smpsCheckBox3KeyPressed(evt);
+            }
+        });
+
+        jhddCheckBox4.setBackground(new java.awt.Color(238, 238, 238));
+        jhddCheckBox4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jhddCheckBox4.setText(" HDD");
+        jhddCheckBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jhddCheckBox4ActionPerformed(evt);
+            }
+        });
+        jhddCheckBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jhddCheckBox4KeyPressed(evt);
+            }
+        });
+
+        jcarry_caseCheckBox6.setBackground(new java.awt.Color(238, 238, 238));
+        jcarry_caseCheckBox6.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jcarry_caseCheckBox6.setText(" Carry Case");
+        jcarry_caseCheckBox6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcarry_caseCheckBox6ActionPerformed(evt);
+            }
+        });
+        jcarry_caseCheckBox6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jcarry_caseCheckBox6KeyPressed(evt);
+            }
+        });
+
+        jfanCheckBox7.setBackground(new java.awt.Color(238, 238, 238));
+        jfanCheckBox7.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jfanCheckBox7.setText("Fan");
+        jfanCheckBox7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jfanCheckBox7ActionPerformed(evt);
+            }
+        });
+        jfanCheckBox7.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jfanCheckBox7KeyPressed(evt);
+            }
+        });
+
+        jcpuCheckBox8.setBackground(new java.awt.Color(238, 238, 238));
+        jcpuCheckBox8.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jcpuCheckBox8.setText(" CPU");
+        jcpuCheckBox8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcpuCheckBox8ActionPerformed(evt);
+            }
+        });
+        jcpuCheckBox8.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jcpuCheckBox8KeyPressed(evt);
+            }
+        });
+
+        jcust_nmtextfield1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jcust_nmtextfield1.setText(" ");
+        jcust_nmtextfield1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcust_nmtextfield1ActionPerformed(evt);
+            }
+        });
+        jcust_nmtextfield1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jcust_nmtextfield1KeyTyped(evt);
+            }
+        });
+
+        jcust_nmLabel4.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jcust_nmLabel4.setText(" Cust.Name :");
+
+        jsavebutton.setBackground(new java.awt.Color(204, 204, 255));
+        jsavebutton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jsavebutton.setText("Save");
+        jsavebutton.setEnabled(true);
+        jsavebutton.setIconTextGap(7);
+        jsavebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jsavebuttonActionPerformed(evt);
+            }
+        });
+        jsavebutton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jsavebuttonKeyPressed(evt);
+            }
+        });
+
+        comboBox.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Laptop", "laptop", "LCD", "printer", "Printer", "Projector", "projector", "MotherBord", "motherBord", "CPU", "cpu", "tab", "TAB", "Tab", " " }));
+        comboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxActionPerformed(evt);
+            }
+        });
+        comboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBoxKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                comboBoxKeyReleased(evt);
+            }
+        });
+
+        comboBox1.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dell", "dell", "asus", "Asus", "Hp", "hp", "lenovo", "Lenovo", "Sony", "SONY", "sony", "Samsung", "samsung", "Acer", "acer", "Micromax", "micromax", "Apple", "apple", "IBM", "ibm", "HCL", "hcl", " ", " " }));
+        comboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox1ActionPerformed(evt);
+            }
+        });
+        comboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBox1KeyPressed(evt);
+            }
+        });
+
+        comboBox2.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dead ", "hing", "frabrication-one side", "frabrication-two side", "charging problem", "keyboard problem", "HDD detect problem", "screen problem", "os problem", "beep", "fan error", "servicing", "graphics bipass", "restart", "no display", "overheat", "dump", "USB socket", "no signal", "screen", "logic card" }));
+        comboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox2ActionPerformed(evt);
+            }
+        });
+        comboBox2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBox2KeyPressed(evt);
+            }
+        });
+
+        jdeviceLabel9.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdeviceLabel9.setText("  Device :");
+
+        jinTextField2.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/yy"))));
+        jinTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jinTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jinTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jinTextField2ActionPerformed(evt);
+            }
+        });
+
+        jdeviceLabel10.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jdeviceLabel10.setText("Device_s/n :");
+
+        jdevice_s_n_TextField3.setText(" ");
+        jdevice_s_n_TextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jdevice_s_n_TextField3ActionPerformed(evt);
+            }
+        });
+
+        jmodel_no_TextField1.setText(" ");
+        jmodel_no_TextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmodel_no_TextField1ActionPerformed(evt);
+            }
+        });
+
+        comboBox4.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dead ", "hing", "frabrication-one side", "frabrication-two side", "charging problem", "keyboard problem", "HDD detect problem", "screen problem", "os problem", "beep", "fan error", "servicing", "graphics bipass", "restart", "no display", "overheat", "dump", "USB socket", "no signal", "screen", "logic card" }));
+        comboBox4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox4ActionPerformed(evt);
+            }
+        });
+        comboBox4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBox4KeyPressed(evt);
+            }
+        });
+
+        comboBox3.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dead ", "hing", "frabrication-one side", "frabrication-two side", "charging problem", "keyboard problem", "HDD detect problem", "screen problem", "os problem", "beep", "fan error", "servicing", "graphics bipass", "restart", "no display", "overheat", "dump", "USB socket", "no signal", "screen", "logic card" }));
+        comboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox3ActionPerformed(evt);
+            }
+        });
+        comboBox3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBox3KeyPressed(evt);
+            }
+        });
+
+        plus2.setBackground(new java.awt.Color(238, 238, 238));
+        plus2.setText("+");
+        plus2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plus2ActionPerformed(evt);
+            }
+        });
+        plus2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                plus2KeyPressed(evt);
+            }
+        });
+
+        plus4.setText("+");
+        plus4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plus4ActionPerformed(evt);
+            }
+        });
+        plus4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                plus4KeyPressed(evt);
+            }
+        });
+
+        plus3.setBackground(new java.awt.Color(238, 238, 238));
+        plus3.setText("+");
+        plus3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plus3ActionPerformed(evt);
+            }
+        });
+        plus3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                plus3KeyPressed(evt);
+            }
+        });
+
+        comboBox5.setBackground(new java.awt.Color(238, 238, 238));
+        comboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "dead ", "hing", "frabrication-one side", "frabrication-two side", "charging problem", "keyboard problem", "HDD detect problem", "screen problem", "os problem", "beep", "fan error", "servicing", "graphics bipass", "restart", "no display", "overheat", "dump", "USB socket", "no signal", "screen", "logic card" }));
+        comboBox5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBox5ActionPerformed(evt);
+            }
+        });
+        comboBox5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                comboBox5KeyPressed(evt);
+            }
+        });
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        jButton1.setText(" Cancel");
+        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton1KeyPressed(evt);
+            }
+        });
+
+        makeargent.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        makeargent.setText(" Make Argent");
+        makeargent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                makeargentActionPerformed(evt);
+            }
+        });
+        makeargent.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                makeargentKeyPressed(evt);
+            }
+        });
+
+        jserialnotextfield2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jserialnotextfield2.setText(" ");
+        jserialnotextfield2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jserialnotextfield2ActionPerformed(evt);
+            }
+        });
+        jserialnotextfield2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jserialnotextfield2KeyTyped(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(143, 143, 143)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jstatusLabel10)
+                                .addComponent(jcust_mobileLabel7)
+                                .addComponent(jdeviceLabel9)
+                                .addComponent(jmodelLabel9))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel4))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcust_nmLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jcust_nmLabel3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                    .addComponent(comboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(comboBox3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(comboBox2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(32, 32, 32)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(plus4)
+                                                    .addComponent(plus3)
+                                                    .addComponent(plus2)))
+                                            .addComponent(jcust_mobiletextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(comboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(202, 202, 202))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(342, 342, 342)))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcpuCheckBox8, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jfanCheckBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(makeargent)
+                                    .addComponent(jadapter_smpsCheckBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jcarry_caseCheckBox6)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jdeviceLabel10)
+                                            .addComponent(jdeviceLabel8))))
+                                .addGap(29, 29, 29)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jpower_cableCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jmodel_no_TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jdevice_s_n_TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jramCheckBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jhddCheckBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(51, 51, 51)
+                                        .addComponent(jsavebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jcust_nmtextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jinTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jserialnotextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(399, 399, 399))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcust_nmLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jserialnotextfield2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcust_nmtextfield1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcust_nmLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jinTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(comboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jdeviceLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jdevice_s_n_TextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jdeviceLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jmodel_no_TextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdeviceLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox1)
+                    .addComponent(jmodelLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(41, 41, 41)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jstatusLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plus2)
+                    .addComponent(jadapter_smpsCheckBox3)
+                    .addComponent(jpower_cableCheckBox1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plus3)
+                    .addComponent(jcarry_caseCheckBox6, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jramCheckBox2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plus4)
+                    .addComponent(jcpuCheckBox8)
+                    .addComponent(jhddCheckBox4))
+                .addGap(25, 25, 25)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jfanCheckBox7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jcust_mobiletextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcust_mobileLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(makeargent, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jsavebutton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        jcust_nmtextfield1.getAccessibleContext().setAccessibleDescription("");
+        jdevice_s_n_TextField3.getAccessibleContext().setAccessibleDescription("");
+        jmodel_no_TextField1.getAccessibleContext().setAccessibleDescription("");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void jinTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jinTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jinTextField2ActionPerformed
+
+    private void comboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox2ActionPerformed
+
+    private void comboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox1ActionPerformed
+
+    private void comboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxActionPerformed
+
+    private void jcust_nmtextfield1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcust_nmtextfield1KeyTyped
+/*
+        char vchar1=evt.getKeyChar();
+        if(!((Character.isLetter(vchar1)) || (Character.isSpaceChar(vchar1))) )
+        {
+            evt.consume();
+        }
+        // TODO add your handling code here:*/
+char keyChar = evt.getKeyChar();
+    if (Character.isLowerCase(keyChar)) {
+      evt.setKeyChar(Character.toUpperCase(keyChar));
+    }
+
+    }//GEN-LAST:event_jcust_nmtextfield1KeyTyped
+
+    private void jcust_nmtextfield1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcust_nmtextfield1ActionPerformed
+
+               // TODO add your handling code here:
+    }//GEN-LAST:event_jcust_nmtextfield1ActionPerformed
+
+    private void jsavebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jsavebuttonActionPerformed
+        String s=null;
+        String cust1=null;
+        String serial_no=jserialnotextfield2.getText();
+        String cust_nm=jcust_nmtextfield1.getText().trim();
+        String mobile_no=jcust_mobiletextfield.getText();
+        String in= jinTextField2.getText();
+        String device=comboBox.getSelectedItem().toString();
+        String model=comboBox1.getSelectedItem().toString();
+
+        String model_no=jmodel_no_TextField1.getText();
+        String device_s_n=jdevice_s_n_TextField3.getText();
+        String co2=comboBox2.getSelectedItem().toString();
+        String co3=comboBox3.getSelectedItem().toString();
+        String co4=comboBox4.getSelectedItem().toString();
+        String co5=comboBox5.getSelectedItem().toString();
+        String sql4="select cust_Id from customer WHERE Cust_Name = '"+cust_nm+"';";
+         JOptionPane.showMessageDialog(null,sql4);
+         int cc1=0;
+             try {
+                     ResultSet rs=null;
+                     rs=st.executeQuery(sql4);
+                     
+                    while(rs.next())
+                    {
+                        cc1=rs.getInt("cust_Id");
+                    }
+                        
+                        JOptionPane.showMessageDialog(null,"cc1="+cc1);
+                
+                  } 
+                  catch (Exception e) 
+                  {
+                        JOptionPane.showMessageDialog(null,""+e);
+                  }
+                if(cc1==0)
+                {
+                    
+                    try
+                    {
+                        
+                        String sql9="select MAX(cust_Id) from customer";
+                        JOptionPane.showMessageDialog(null,sql9);
+                        rs=st.executeQuery(sql9);
+                        JOptionPane.showMessageDialog(null,"2+++");
+                        while(rs.next())
+                        {
+                                cu1=rs.getInt("MAX(cust_Id)");
+                        }
+                        cu1=cu1+1;
+                        JOptionPane.showMessageDialog(null,"cu1="+cu1);
+                         cc1=cu1;
+                     }
+                     catch(Exception e)
+                     {
+                        JOptionPane.showMessageDialog(null,e);
+                     }
+                                
+                }
+               
+               
+                    String status=co2+" "+co3+" "+co4+" "+co5;
+      
+        
+                if(cust_nm.equals(" ")|| mobile_no.equals(" ") || device.equals(" "))
+                {
+                    JOptionPane.showMessageDialog(null,"plase enter All required data");
+                }
+                else
+                {
+           
+             
+                    String sql1="INSERT INTO customer(cust_Id,In_Date,Cust_Name,Mobile_No,Device,Model,Model_No,Device_s_n,Status,Adapter_or_Smps,Power_Cable,Carry_Case,RAM,HDD,CPU,Fan,Remark,Argent) values('"+cc1+"','"+in+"','"+cust_nm+"','"+mobile_no+"','"+device+"','"+model+"','"+model_no+"','"+device_s_n+"','"+status+"','"+c1+"','"+c2+"','"+c3+"','"+c4+"','"+c5+"','"+c6+"','"+c7+"','pending','"+Ag+"');";
+           
+                    JOptionPane.showMessageDialog(null,sql1);
+                    try 
+                    {
+                        st.executeUpdate(sql1);
+                    } 
+                    catch (Exception e) 
+                    {
+                
+                        JOptionPane.showMessageDialog(null,""+e);
+                    }
+                JOptionPane.showMessageDialog(null,"Record in Succesfully inserted");
+
+            this.setVisible(false);
+            new page_one().setVisible(true);
+            jcust_mobiletextfield.setText("  ");
+            jcarry_caseCheckBox6.setSelected(false);
+
+        }// TODO add your handling code here:
+    }//GEN-LAST:event_jsavebuttonActionPerformed
+
+    private void jcpuCheckBox8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcpuCheckBox8KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jcpuCheckBox8.isSelected())
+            {
+                jcpuCheckBox8.setSelected(false);
+
+            }
+            else
+            {
+                jcpuCheckBox8.setSelected(true);
+            }
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcpuCheckBox8KeyPressed
+
+    private void jcpuCheckBox8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcpuCheckBox8ActionPerformed
+        if(jcpuCheckBox8.isSelected())
+        {
+            c6='Y';
+        }
+        else
+        {
+            c6='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcpuCheckBox8ActionPerformed
+
+    private void jfanCheckBox7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jfanCheckBox7KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jfanCheckBox7.isSelected())
+            {
+                jfanCheckBox7.setSelected(false);
+
+            }
+            else
+            {
+                jfanCheckBox7.setSelected(true);
+            }
+
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jfanCheckBox7KeyPressed
+
+    private void jfanCheckBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jfanCheckBox7ActionPerformed
+        if(jfanCheckBox7.isSelected())
+        {
+            c7='Y';
+        }
+        else
+        {
+            c7='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jfanCheckBox7ActionPerformed
+
+    private void jcarry_caseCheckBox6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcarry_caseCheckBox6KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jcarry_caseCheckBox6.isSelected())
+            {
+                jcarry_caseCheckBox6.setSelected(false);
+
+            }
+            else
+            {
+                jcarry_caseCheckBox6.setSelected(true);
+            }
+
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_jcarry_caseCheckBox6KeyPressed
+
+    private void jcarry_caseCheckBox6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcarry_caseCheckBox6ActionPerformed
+        if(jcarry_caseCheckBox6.isSelected())
+        {
+            c3='Y';
+        }
+        else
+        {
+            c3='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcarry_caseCheckBox6ActionPerformed
+
+    private void jhddCheckBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jhddCheckBox4KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jhddCheckBox4.isSelected())
+            {
+                jhddCheckBox4.setSelected(false);
+            }
+            else
+            {
+                jhddCheckBox4.setSelected(true);
+
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jhddCheckBox4KeyPressed
+
+    private void jhddCheckBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jhddCheckBox4ActionPerformed
+        if(jhddCheckBox4.isSelected())
+        {
+            c5='Y';
+        }
+        else
+        {
+            c5='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jhddCheckBox4ActionPerformed
+
+    private void jadapter_smpsCheckBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jadapter_smpsCheckBox3KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jadapter_smpsCheckBox3.isSelected())
+            {
+                jadapter_smpsCheckBox3.setSelected(false);
+            }
+            else
+            {
+                jadapter_smpsCheckBox3.setSelected(true);
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jadapter_smpsCheckBox3KeyPressed
+
+    private void jadapter_smpsCheckBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jadapter_smpsCheckBox3ActionPerformed
+        if(jadapter_smpsCheckBox3.isSelected())
+        {
+            c1='Y';
+        }
+        else
+        {
+            c1='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jadapter_smpsCheckBox3ActionPerformed
+
+    private void jramCheckBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jramCheckBox2KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jramCheckBox2.isSelected())
+            {
+                jramCheckBox2.setSelected(false);
+
+            }
+            else
+            {
+                jramCheckBox2.setSelected(true);
+            }
+
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jramCheckBox2KeyPressed
+
+    private void jramCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jramCheckBox2ActionPerformed
+        if(jramCheckBox2.isSelected())
+        {
+            c4='Y';
+        }
+        else
+        {
+            c4='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jramCheckBox2ActionPerformed
+
+    private void jpower_cableCheckBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jpower_cableCheckBox1KeyPressed
+
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            if(jpower_cableCheckBox1.isSelected())
+            {
+                jpower_cableCheckBox1.setSelected(false);
+            }
+            else
+            {
+                jpower_cableCheckBox1.setSelected(true);
+            }
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jpower_cableCheckBox1KeyPressed
+
+    private void jpower_cableCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jpower_cableCheckBox1ActionPerformed
+        if(jpower_cableCheckBox1.isSelected())
+        {
+            c2='Y';
+        }
+        else
+        {
+            c2='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jpower_cableCheckBox1ActionPerformed
+
+    private void jcust_mobiletextfieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jcust_mobiletextfieldKeyTyped
+        char vchar=evt.getKeyChar();
+        if(!(Character.isDigit(vchar)) || (vchar==KeyEvent.VK_BACK_SPACE) || (vchar==KeyEvent.VK_DELETE) )
+        {
+            evt.consume();
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcust_mobiletextfieldKeyTyped
+
+    private void jcust_mobiletextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcust_mobiletextfieldActionPerformed
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jcust_mobiletextfieldActionPerformed
+
+    private void comboBox4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox4ActionPerformed
+
+    private void comboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox3ActionPerformed
+
+    private void jmodel_no_TextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmodel_no_TextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmodel_no_TextField1ActionPerformed
+
+    private void comboBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBox5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox5ActionPerformed
+
+    private void plus2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plus2ActionPerformed
+
+            comboBox3.setVisible(true);
+            plus3.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plus2ActionPerformed
+
+    private void plus3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plus3ActionPerformed
+
+            comboBox4.setVisible(true);
+            plus4.setVisible(true);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plus3ActionPerformed
+
+    private void plus4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plus4ActionPerformed
+
+                        comboBox5.setVisible(true);
+          
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plus4ActionPerformed
+
+    private void jdevice_s_n_TextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jdevice_s_n_TextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jdevice_s_n_TextField3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    
+        try
+        {
+        this.setVisible(false);
+        new page_one().setVisible(true);
+        }
+        catch(Exception e){}        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void makeargentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeargentActionPerformed
+       
+         if(makeargent.isSelected())
+        {
+            Ag='Y';
+        }
+         else
+         {
+             Ag='-';
+         }
+         
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_makeargentActionPerformed
+
+    private void makeargentKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_makeargentKeyPressed
+        if(makeargent.isSelected())
+        {
+            Ag='Y';
+        }
+        else
+        {
+            Ag='-';
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_makeargentKeyPressed
+
+    private void comboBoxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBoxKeyReleased
+// TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxKeyReleased
+
+    private void comboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBoxKeyPressed
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBoxKeyPressed
+   }
+    private void comboBox1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBox1KeyPressed
+
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");
+
+            // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox1KeyPressed
+}
+    private void comboBox2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBox2KeyPressed
+if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox2KeyPressed
+    }
+    private void comboBox3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBox3KeyPressed
+     if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox3KeyPressed
+    }
+    private void comboBox4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBox4KeyPressed
+     
+    if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");    
+
+    // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox4KeyPressed
+    }
+    private void comboBox5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_comboBox5KeyPressed
+     
+        if (evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            if (((JTextComponent) ((JComboBox) ((Component) evt
+                    .getSource()).getParent()).getEditor()
+                    .getEditorComponent()).getText().isEmpty())
+                System.out.println("please dont make me blank");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboBox5KeyPressed
+    }
+    private void jsavebuttonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jsavebuttonKeyPressed
+    
+        if(evt.getKeyChar() == KeyEvent.VK_ENTER)
+        {
+        String s=null;
+        String cust1=null;
+        String serial_no=jserialnotextfield2.getText();
+        String cust_nm=jcust_nmtextfield1.getText().trim();
+        String mobile_no=jcust_mobiletextfield.getText();
+        String in= jinTextField2.getText();
+        String device=comboBox.getSelectedItem().toString();
+        String model=comboBox1.getSelectedItem().toString();
+
+        String model_no=jmodel_no_TextField1.getText();
+        String device_s_n=jdevice_s_n_TextField3.getText();
+        String co2=comboBox2.getSelectedItem().toString();
+        String co3=comboBox3.getSelectedItem().toString();
+        String co4=comboBox4.getSelectedItem().toString();
+        String co5=comboBox5.getSelectedItem().toString();
+        String sql4="select cust_Id from customer WHERE Cust_Name = '"+cust_nm+"';";
+         JOptionPane.showMessageDialog(null,sql4);
+         int cc1=0;
+             try {
+                     ResultSet rs=null;
+                     rs=st.executeQuery(sql4);
+                     
+                    while(rs.next())
+                    {
+                        cc1=rs.getInt("cust_Id");
+                    }
+                        
+                        JOptionPane.showMessageDialog(null,"cc1="+cc1);
+                
+                  } 
+                  catch (Exception e) 
+                  {
+                        JOptionPane.showMessageDialog(null,""+e);
+                  }
+                if(cc1==0)
+                {
+                    
+                    try
+                    {
+                        
+                        String sql9="select MAX(cust_Id) from customer";
+                        JOptionPane.showMessageDialog(null,sql9);
+                        rs=st.executeQuery(sql9);
+                        JOptionPane.showMessageDialog(null,"2+++");
+                        while(rs.next())
+                        {
+                                cu1=rs.getInt("MAX(cust_Id)");
+                        }
+                        cu1=cu1+1;
+                        JOptionPane.showMessageDialog(null,"cu1="+cu1);
+                         cc1=cu1;
+                        
+                    }
+                    catch(Exception e)
+                    {
+                        JOptionPane.showMessageDialog(null,e);
+                    }
+                                
+                }
+               
+               
+        String status=co2+" "+co3+" "+co4+" "+co5;
+      
+        
+        if(cust_nm.equals(" ")|| mobile_no.equals(" ") || device.equals(" ")){
+            JOptionPane.showMessageDialog(null,"plase enter All required data");
+        }
+        else
+        {
+           
+             
+             String sql1="INSERT INTO customer(cust_Id,In_Date,Cust_Name,Mobile_No,Device,Model,Model_No,Device_s_n,Status,Adapter_or_Smps,Power_Cable,Carry_Case,RAM,HDD,CPU,Fan,Remark,Argent) values('"+cc1+"','"+in+"','"+cust_nm+"','"+mobile_no+"','"+device+"','"+model+"','"+model_no+"','"+device_s_n+"','"+status+"','"+c1+"','"+c2+"','"+c3+"','"+c4+"','"+c5+"','"+c6+"','"+c7+"','pending','"+Ag+"');";
+           
+            JOptionPane.showMessageDialog(null,sql1);
+            try {
+                st.executeUpdate(sql1);
+            } 
+            catch (Exception e) {
+                                JOptionPane.showMessageDialog(null,""+e);
+            }
+            JOptionPane.showMessageDialog(null,"Record in Succesfully inserted");
+
+            this.setVisible(false);
+            new page_one().setVisible(true);
+            jcust_mobiletextfield.setText("  ");
+            jcarry_caseCheckBox6.setSelected(false);
+        }
+    }
+// TODOadd your handling code here:
+    }//GEN-LAST:event_jsavebuttonKeyPressed
+
+    private void jButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton1KeyPressed
+ 
+         if(evt.getKeyChar() == KeyEvent.VK_ENTER)
+        {
+            try
+            {
+                this.setVisible(false);
+                new page_one().setVisible(true);
+            }
+            catch(Exception e){}        // TODO add your handling code here:
+        
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1KeyPressed
+
+    private void jserialnotextfield2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jserialnotextfield2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jserialnotextfield2ActionPerformed
+
+    private void jserialnotextfield2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jserialnotextfield2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jserialnotextfield2KeyTyped
+
+    private void plus2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_plus2KeyPressed
+
+         if(evt.getKeyChar() == KeyEvent.VK_ENTER)
+        {  
+        comboBox3.setVisible(true);
+            plus3.setVisible(true);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plus2KeyPressed
+
+    private void plus3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_plus3KeyPressed
+      if(evt.getKeyChar() == KeyEvent.VK_ENTER)
+        {    
+            comboBox4.setVisible(true);
+            plus4.setVisible(true);
+        }
+// TODO add your handling code here:
+    }//GEN-LAST:event_plus3KeyPressed
+
+    private void plus4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_plus4KeyPressed
+      
+         if(evt.getKeyChar() == KeyEvent.VK_ENTER)
+        {    
+            comboBox5.setVisible(true);
+        }
+          // TODO add your handling code here:
+    }//GEN-LAST:event_plus4KeyPressed
+    
+  //   * @param args the command line arguments
+    // */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+       
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(main1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new main1().setVisible(true);
+        });
+    }
+  
+Statement st;
+Connection conn ;
+ int cu1=0;
+ResultSet rs=null;
+char c1='-';
+char c2='-';
+char c3='-';
+char c4='-';
+char c5='-';
+char c6='-';
+char c7='-';
+char Ag='-';
+               
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBox;
+    private javax.swing.JComboBox<String> comboBox1;
+    private javax.swing.JComboBox<String> comboBox2;
+    private javax.swing.JComboBox<String> comboBox3;
+    private javax.swing.JComboBox<String> comboBox4;
+    private javax.swing.JComboBox<String> comboBox5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JCheckBox jadapter_smpsCheckBox3;
+    private javax.swing.JCheckBox jcarry_caseCheckBox6;
+    private javax.swing.JCheckBox jcpuCheckBox8;
+    private javax.swing.JLabel jcust_mobileLabel7;
+    private javax.swing.JTextField jcust_mobiletextfield;
+    private javax.swing.JLabel jcust_nmLabel3;
+    private javax.swing.JLabel jcust_nmLabel4;
+    private javax.swing.JTextField jcust_nmtextfield1;
+    private javax.swing.JLabel jdeviceLabel10;
+    private javax.swing.JLabel jdeviceLabel8;
+    private javax.swing.JLabel jdeviceLabel9;
+    private javax.swing.JTextField jdevice_s_n_TextField3;
+    private javax.swing.JCheckBox jfanCheckBox7;
+    private javax.swing.JCheckBox jhddCheckBox4;
+    private javax.swing.JFormattedTextField jinTextField2;
+    private javax.swing.JLabel jmodelLabel9;
+    private javax.swing.JTextField jmodel_no_TextField1;
+    private javax.swing.JCheckBox jpower_cableCheckBox1;
+    private javax.swing.JCheckBox jramCheckBox2;
+    private javax.swing.JButton jsavebutton;
+    private javax.swing.JTextField jserialnotextfield2;
+    private javax.swing.JLabel jstatusLabel10;
+    private javax.swing.JCheckBox makeargent;
+    private javax.swing.JButton plus2;
+    private javax.swing.JButton plus3;
+    private javax.swing.JButton plus4;
+    // End of variables declaration//GEN-END:variables
+
+}
