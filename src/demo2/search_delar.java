@@ -180,17 +180,17 @@ public class search_delar extends javax.swing.JFrame {
 
                 while(rs.next())
                 {
-                   // System.out.println("***");
+                   
 
                     int a=rs.getInt("Serial_Id");
                      int a1=rs.getInt("Delar_Id");
-                    // System.out.println("++++"+id);
+                    
                      as=""+a;
                     as1=""+a1;
-                    //System.out.println("!!!!"+as);
+               
                     if(id.equals(as))
                     {
-                        //  JOptionPane.showMessageDialog(null);
+                      
                         System.out.println("***"+rs.getString("Delar_Id"));
                         s1=rs.getString("In_Date");
                         s2=rs.getString("Out_Date");
